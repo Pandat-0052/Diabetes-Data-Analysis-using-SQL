@@ -1,0 +1,148 @@
+  
+ 1. Retrieve the Patient_id and ages of all patients.
+
+ select patient_id,datediff(year,dob,getdate()) as age 
+  from diabetes_
+ 
+  alter table diabetes_
+ add age int;
+ update  diabetes_
+ set age = datediff(year,dob,getdate()) ;
+
+2. Select all female patients who are older than 30.
+  
+ select * from diabetes_
+ where gender = 'Female' and age >30 ;
+
+
+ 3. Calculate the average BMI of patients
+    
+	select round(avg(bmi),2) as AVG_BMI
+	from diabetes_;
+ 
+ 
+
+
+ 4.List patients in descending order of blood glucose levels
+           
+    select * 
+	from diabetes_
+	order by blood_glucose_level desc;
+
+
+5.Find patients who have hypertension and diabetes
+   
+   select * 
+	from diabetes_
+	where hypertension = 1 and diabetes = 1;
+ 
+ 6.Determine the number of patients with heart disease
+   
+   select Count(*) as Total_Heart_disease_patient 
+   from diabetes_
+   where heart_disease = 1;
+ 
+ 7.Group patients by smoking history and count how many smokers and nonsmokers there are.
+    
+	select smoking_history , count(*) as Total 
+	from diabetes_
+	group by smoking_history
+ 
+ 8. Retrieve the Patient_ids of patients who have a BMI greater than the average BMI
+
+    select patient_id 
+	from diabetes_
+	where bmi > (
+	select avg(bmi) from diabetes_);
+
+
+9.Find the patient with the highest HbA1c level and the patient with the lowest HbA1clevel.
+
+    select * 
+	from diabetes_
+	where HbA1c_level in (select max(HbA1c_level) as max_Hbaic_level from diabetes_);
+	
+	
+    select * 
+	from diabetes_
+	where HbA1c_level in (select min(HbA1c_level) as min_Hbaic_level from diabetes_);
+
+
+10.Calculate the age of patients in years (assuming the current date as of now).
+   
+   alter table diabetes_
+ add age int;
+ update  diabetes_
+ set age = datediff(year,dob,getdate()) ;
+ 
+  select age 
+  from diabetes_
+
+
+11.Rank patients by blood glucose level within each gender group.
+ 
+	SELECT 
+    employeename, patient_id, gender,
+    Blood_glucose_level,
+    dense_RANK() OVER (PARTITION BY Gender ORDER BY Blood_glucose_level) AS Glucose_Level_Rank
+FROM 
+    diabetes_;
+
+12.Update the smoking history of patients who are older than 50 to "Ex-smoker."
+
+   update  diabetes_
+   set smoking_history = 'Ex-smoker'
+   where age > 33;
+
+   ------To check "Ex-smoker"
+   select smoking_history , count(*) as Total 
+	from diabetes_
+	group by smoking_history
+
+13. Insert a new patient into the database with sample data.
+
+    insert into diabetes_(employeename,patient_id,gender,dob,hypertension,heart_disease,smoking_history,
+	bmi,HbA1c_level,blood_glucose_level,diabetes,age)
+	values ('Vishesh','PT100101','Male',9/25/1996,0,1,'never',28.22,5.5,98,0,39)
+	
+	--------------------To check
+	select * 
+	from diabetes_
+	where employeename = 'Vishesh'
+
+14.Delete all patients with heart disease from the database.
+ 
+    delete from diabetes_
+	where heart_disease = 1
+
+	-----------------To check
+	select * 
+	from diabetes_
+	where heart_disease = 1
+	
+15.Find patients who have hypertension but not diabetes using the EXCEPT operator.
+    
+	select * from diabetes_
+	where hypertension = 1 
+	except
+	select * from diabetes_ 
+	where diabetes = 1
+
+16.Define a unique constraint on the "patient_id" column to ensure its values are unique.
+    
+	alter table diabetes_
+	add constraint un_patient_id unique (patient_id);
+
+17.Create a view that displays the Patient_ids, ages, and BMI of patients.
+
+    create view patient_info as  (
+	select patient_id, age, bmi 
+	from diabetes_) ;
+
+	------To check
+	
+   select * from patient_info;
+
+18. Suggest improvements in the database schema to reduce data redundancy and improve data integrity.
+
+     
