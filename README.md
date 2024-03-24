@@ -16,8 +16,8 @@ The goal of this project is to analyze a dataset related to diabetes patients an
 
 ## Repository Structure
 
-- `sql_scripts/`: Contains SQL scripts used for data extraction, cleaning, and analysis.
-- `data/`: Includes the dataset used for analysis.
+- `Diabetes.sql`: Contains SQL scripts used for data extraction, cleaning, and analysis.
+- `Diabetes.csv.xlsx`: Includes the dataset used for analysis.
 - `documentation/`: Additional project documentation and resources.
 
 ## Getting Started
