@@ -1,5 +1,5 @@
-# Diabetes Data Analysis Project Using SQL
-
+# <p align ="center"> Diabetes Data Analysis Project Using SQL
+# <p align ="center">![Pic](https://github.com/Pandat-0052/Diabetes-Data-Analysis-using-SQL/blob/main/Capture.JPG)</p>
 This repository contains the code and documentation for analyzing diabetes-related data using SQL 
 
 ## Project Overview
@@ -16,9 +16,9 @@ The goal of this project is to analyze a dataset related to diabetes patients an
 
 ## Repository Structure
 
-- `Diabetes.sql`: Contains SQL scripts used for data extraction, cleaning, and analysis.
-- `Diabetes.csv.xlsx`: Includes the dataset used for analysis.
-- `documentation/`: Additional project documentation and resources.
+- [[Diabetes.sql]](https://github.com/Pandat-0052/Diabetes-Data-Analysis-using-SQL/blob/main/Diabetes.sql): Contains SQL scripts used for data extraction, cleaning, and analysis.
+- [Diabetes.Raw Data](https://github.com/Pandat-0052/Diabetes-Data-Analysis-using-SQL/blob/main/Diabetes.csv.xlsx): Includes the dataset used for analysis.
+- [Diabetes Documnentation](https://github.com/Pandat-0052/Diabetes-Data-Analysis-using-SQL/blob/main/Diabetes_Q%26A.pdf): Additional project documentation and resources.
 
 ## Getting Started
 
